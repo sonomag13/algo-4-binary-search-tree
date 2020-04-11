@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/strobe/Desktop/learning-algo-week-4-binary-search-tree/lowest-ancester-of-two-nodes/BST.h
+DataStruct.h
+/home/strobe/Desktop/learning-algo-week-4-binary-search-tree/lowest-ancester-of-two-nodes/DataStruct.h
+iostream
+-
+
+/home/strobe/Desktop/learning-algo-week-4-binary-search-tree/lowest-ancester-of-two-nodes/CommonAncestor.h
+DataStruct.h
+/home/strobe/Desktop/learning-algo-week-4-binary-search-tree/lowest-ancester-of-two-nodes/DataStruct.h
+
+/home/strobe/Desktop/learning-algo-week-4-binary-search-tree/lowest-ancester-of-two-nodes/DataStruct.h
+iostream
+-
+
+/home/strobe/Desktop/learning-algo-week-4-binary-search-tree/lowest-ancester-of-two-nodes/main.cpp
+BST.h
+/home/strobe/Desktop/learning-algo-week-4-binary-search-tree/lowest-ancester-of-two-nodes/BST.h
+CommonAncestor.h
+/home/strobe/Desktop/learning-algo-week-4-binary-search-tree/lowest-ancester-of-two-nodes/CommonAncestor.h
+iostream
+-
+
