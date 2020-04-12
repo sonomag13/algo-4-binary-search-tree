@@ -1,1 +1,0 @@
-/usr/bin/c++  -g   CMakeFiles/lowest_ancester_of_two_nodes.dir/main.cpp.o  -o lowest_ancester_of_two_nodes 

@@ -1,3 +1,0 @@
-/home/strobe/Desktop/learning-algo-week-4-binary-search-tree/lowest-ancester-of-two-nodes/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/strobe/Desktop/learning-algo-week-4-binary-search-tree/lowest-ancester-of-two-nodes/cmake-build-debug/CMakeFiles/lowest_ancester_of_two_nodes.dir
-/home/strobe/Desktop/learning-algo-week-4-binary-search-tree/lowest-ancester-of-two-nodes/cmake-build-debug/CMakeFiles/edit_cache.dir
