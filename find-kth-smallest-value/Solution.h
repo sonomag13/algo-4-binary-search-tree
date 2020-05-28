@@ -78,3 +78,39 @@ private:
         }
     }
 };
+
+// this solution does not record the numbers, save some space
+
+class Solution {
+public:
+    /**
+     * @param root: the given BST
+     * @param k: the given k
+     * @return: the kth smallest element in BST
+     */
+    int kthSmallest(TreeNode * root, int k) {
+        // write your code here
+        this->k = k; 
+        // vector<int> result; 
+        inOrder(root); 
+        return result; 
+    }
+    
+private: 
+    
+    int k; 
+    int result; 
+    void inOrder(TreeNode* currentNode) {
+        if (currentNode == NULL) {
+            return; 
+        }
+        
+        inOrder(currentNode->left); 
+        if (k == 1) {
+            result = currentNode->val; 
+        }
+        k--; 
+        inOrder(currentNode->right);
+    }
+    
+};

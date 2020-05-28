@@ -45,9 +45,9 @@ Explanation：
         - the node is a leaf
         - push the path string into the vector
     - Non-base case:
-        - append the current value to the path string
+        - append the currentPath value to the path string
         - pass the path string to the next iteration of DFS
-    Notice that, the string path is passed by variable, NOT by reference. That sadi, for every layer of 
+    Notice that, the string path is passed by variable, NOT by reference. That said, for every layer of 
     the recursion, there is a new copy of string path, and each copy is eventually collected at the
     bottome case
 */
@@ -60,24 +60,37 @@ public:
      */
     vector<string> binaryTreePaths(TreeNode * root) {
         // write your code here
-        vector<string> pathVector; 
-        string pathString; 
-        pathString = ""; 
-        dfsPath(root, pathString, pathVector); 
-        return pathVector; 
+        vector<vector<int>> vecResult; 
+        vector<int> currentPath;         
+        dfs(root, currentPath, vecResult);         
+        return convertVec2Str(vecResult); 
     }
-
+        
 private:
-    void dfsPath(TreeNode* currentNode, string pathString, vector<string>& pathVector) {
-        if(currentNode != NULL) {
-            pathString += to_string(currentNode->val); 
-            if(currentNode->left == NULL && currentNode->right == NULL) {
-                cout << pathString << endl; 
-                pathVector.push_back(pathString);
+    void dfs(TreeNode* currentRoot, vector<int> currentPath, vector<vector<int>>& vecResult) {        
+        if (currentRoot != NULL) {
+            currentPath.push_back(currentRoot->val); 
+            if (!currentRoot->left && !currentRoot->right) {
+                vecResult.push_back(currentPath); 
+                return; 
             }
-            pathString += "->"; 
-            dfsPath(currentNode->left, pathString, pathVector);
-            dfsPath(currentNode->right, pathString, pathVector);
+            dfs(currentRoot->left, currentPath, vecResult); 
+            dfs(currentRoot->right, currentPath, vecResult);
         }
-    } 
+    }
+    
+    vector<string> convertVec2Str(vector<vector<int>> vecResult) {
+        vector<string> result;
+        for (auto ele : vecResult) {
+            string currentPath; 
+            int n = ele.size(); 
+            for (int i = 0; i < n - 1; ++i) {
+                currentPath += to_string(ele[i]);
+                currentPath += "->";
+            }
+            currentPath += to_string(ele[n - 1]);
+            result.push_back(currentPath);
+        }
+        return result; 
+    }
 };

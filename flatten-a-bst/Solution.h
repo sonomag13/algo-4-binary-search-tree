@@ -55,6 +55,7 @@ Don't forget to mark the left child of each node to null. Or you will get Time L
  * }
  */
 
+
 class Solution {
 public:
     /**
@@ -63,21 +64,37 @@ public:
      */
     void flatten(TreeNode * root) {
         // write your code here
-        if (root == NULL) {
-            return; 
-        }
-        while (root != NULL) {
-            if (root->left != NULL) {
-                TreeNode* ptrNode = root->left; 
-                while (ptrNode->right != NULL) {
-                    ptrNode = ptrNode->right; 
+        
+        TreeNode* currentNode{root}; 
+        
+        while (currentNode) {
+            
+            if (currentNode->left) {
+                TreeNode* searchNode = currentNode->left; 
+                while (searchNode->right) {
+                    searchNode = searchNode->right;
                 }
-                ptrNode->right = root->right; 
-                root->right = root->left; 
-                root->left = NULL; 
+                
+                /**
+                 * The search node end up at the right bottom corner of the left
+                 * subtree of the current node; 
+                 * Then move right subtree of the current node to the right 
+                 * pointer of the search node. 
+                 */ 
+                searchNode->right = currentNode->right; 
+                
+                /**
+                 * disconnet the right substree from the current node
+                 * the right child is replaced by the left subtree
+                 */ 
+                currentNode->right = currentNode->left; 
+                
+                // nullify the left child of the current node
+                currentNode->left = NULL; 
+                
             }
-            root = root->right; 
+            currentNode = currentNode->right; 
         }
+        
     }
-    
 };
