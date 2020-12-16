@@ -8,13 +8,10 @@ struct TreeNode {
     int val;
     TreeNode* left{nullptr};
     TreeNode* right{nullptr};
-    explicit TreeNode(int val): val(val), left(nullptr), right(nullptr) {
-
-    }
+    explicit TreeNode(int val): val(val), left(nullptr), right(nullptr) { }
 };
 
 class BinarySearchTree {
-
 public:
 
     BinarySearchTree() = default;
