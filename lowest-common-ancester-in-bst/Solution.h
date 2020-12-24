@@ -29,53 +29,45 @@
  */
 
 
-/**
- * Definition of TreeNode:
- * class TreeNode {
- * public:
- *     int val;
- *     TreeNode *left, *right;
- *     TreeNode(int val) {
- *         this->val = val;
- *         this->left = this->right = NULL;
- *     }
- * }
- */
+// Definition of TreeNode:
+class TreeNode {
+    public:
+    int val;
+    TreeNode *left, *right;
+    TreeNode(int val) {
+        this->val = val;
+        this->left = this->right = NULL;
+        }
+}
 
 class Solution {
 public:
-    /**
-     * @param root: root of the tree
-     * @param p: the node p
-     * @param q: the node q
-     * @return: find the LCA of p and q
-     */
-    TreeNode * lowestCommonAncestor(TreeNode * root, TreeNode * p, TreeNode * q) {
-        // write your code here
-        int val1 = p->val; 
-        int val2 = q->val; 
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
         
-        TreeNode* currentNode = root; 
+        TreeNode* currentNode{root}; 
         
-        while(true) {
+        while (currentNode) {            
+            /*
+             * three cases: 
+             * - p and q are on the right side of the root
+             * - p and q are on the left side of the root
+             * - otherwise, the common ancester if found
+             */             
+            bool case1 = currentNode->val < p->val && currentNode->val < q->val;
+            bool case2 = currentNode->val > p->val && currentNode->val > q->val;
             
-            bool cond1 = (val1 > currentNode->val) && (val2 > currentNode->val);
-            bool cond2 = (val1 < currentNode->val) && (val2 < currentNode->val);
-            
-            if (cond1) {
-                // both p and q are on the right side
+            if (case1) {
                 currentNode = currentNode->right; 
             }
-            else if (cond2) {
-                // both p and q are on the left side
+            else if (case2) {
                 currentNode = currentNode->left; 
             }
             else {
-                // p and q are on two sides of the current node
-                break; 
-            }
-            
-        }
-        return currentNode; 
+                return currentNode; 
+            }            
+        }                        
+                        
+        return nullptr; 
+        
     }
 };
