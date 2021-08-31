@@ -30,18 +30,18 @@ Given target value is a floating point.
 You are guaranteed to have only one unique value in the BST that is closest to the target.
 */
 
-/**
- * Definition of TreeNode:
- * class TreeNode {
- * public:
- *     int val;
- *     TreeNode *left, *right;
- *     TreeNode(int val) {
- *         this->val = val;
- *         this->left = this->right = NULL;
- *     }
- * }
- */
+#include <iostream>
+
+// Definition of TreeNode:
+class TreeNode {
+public:
+    int val;
+    TreeNode *left, *right;
+    TreeNode(int val) {
+        this->val = val;
+        this->left = this->right = NULL;
+    }
+};
 
 class Solution {
 public:
@@ -65,5 +65,45 @@ public:
             (target < currentVal) ? (root = root->left) : (root = root->right); 
         }
         return cloesetVal; 
+    }
+};
+
+
+class Solution2 {
+public:
+    int closestValue(TreeNode* root, double target) {
+        
+        // target = target; 
+        
+        dfs(root, target);
+        
+        return result; 
+    }
+    
+private:
+    int result; 
+    double minDelta{INT_MAX};
+    // double target; 
+    
+    void dfs(TreeNode* root, const double target) {        
+        if (!root) {
+            // base case
+            return; 
+        }
+        
+        double delta = abs(root->val - target);
+        
+        if (delta < minDelta) {
+            result = root->val;
+            minDelta = delta; 
+        }
+                
+        if (target > root->val) {
+            dfs(root->right, target);   
+        }
+        else {
+            dfs(root->left, target);
+        }
+        
     }
 };
